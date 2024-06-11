@@ -8,16 +8,16 @@ public class LinkedList {
 
   class Node {
 
-    String data;
-    Node next;
+    String data; // Valor do nó
+    Node next; // Referencia o próximo nó
 
-    Node(String data){
+    Node(String data) {  // Construtor - todo nó tem que obrigatoriamente ter um valor
       this.data = data;
     }
 
   }
 
-  public LinkedList(String data) {
+  public LinkedList(String data) { // Construtor da lista ligada
     length = 1;
     Node newNode = new Node(data);
     head = newNode;
@@ -62,7 +62,7 @@ public class LinkedList {
   }
 
   
-  public void append(String data) {
+  public void append(String data) { // Inserir no Final da Lista
     Node newNode = new Node(data);
     if (length == 0) {
       head = newNode;
@@ -83,12 +83,13 @@ public class LinkedList {
       pre = pre.next;
     }
 
-    temp = tail;
+    temp = tail; // Salvo apenas para retornar-lo no final.
+
     tail = pre;
     tail.next = null;
 
     length--;
-    if (length == 0) {
+    if (length == 0) { // Se agora a lista ficou zerada, zerar a lista.
       head = null;
       tail = null;
     }
@@ -97,7 +98,7 @@ public class LinkedList {
 
   }
 
-  public void prepend(String data) {
+  public void prepend(String data) { // Insere no começo da lista
     Node newNode = new Node(data);
     if (length == 0) {
       head = newNode;
@@ -112,11 +113,11 @@ public class LinkedList {
   public Node removeFirst() {
     if (length == 0) return null;
     Node temp = head;
-    head = head.next;
-    temp.next = null;
-    length--;
+    head = head.next; // Efetivamente remove a referência ao primeiro nó da lista.
+    temp.next = null; // Garantia que o nó removido não tenha nenhuma conexão com a lista.
 
-    if (length == 0) {
+    length--;
+    if (length == 0) { // Caso a lista fique vazia após a remoção, zerar a lista.
       head = null;
       tail = null;
     }
@@ -160,6 +161,7 @@ public class LinkedList {
      newNode.next = temp.next;
      temp.next = newNode;
      length++;
+
      return true;
   }
 
@@ -168,10 +170,10 @@ public class LinkedList {
     if (index == 0) return removeFirst();
     if (index == length  - 1) return removeLast();
 
-    Node prev = get(index - 1);
-    Node temp = prev.next;
+    Node prev = get(index - 1); // Anterior ao que vai ser removido
+    Node temp = prev.next; // O nó a ser removido. É o próximo do anterior marcado
 
-    prev.next = temp.next;
+    prev.next = temp.next; // O próximo do anterior vai ser o próximo do que vai ser removido. 
     temp.next = null;
     length--;
 

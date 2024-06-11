@@ -13,10 +13,11 @@ public class App
         LinkedList list = new LinkedList("Elemento 1");
         list.append("Elemento 2");
         list.append("Elemento 3");
-        list.prepend("Elemento 0");
+        // list.append("Elemento 3");
+        // list.prepend("Elemento 0");
      
-        list.remove(2);
-        list.print();
+        // list.remove(2);
+        // list.print();
     
     
         // list.insert(3, "elemento 2.5");
